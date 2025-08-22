@@ -32,29 +32,36 @@ function toggleMobileMenu() {
 
 // End Hamburger Menu
   
-//  Google Map
+
+// Google Map
 function handleImageClick() {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      let lat = position.coords.latitude;
-      let lng = position.coords.longitude;
+    navigator.geolocation.getCurrentPosition(
+      function(position) {
+        let lat = position.coords.latitude;
+        let lng = position.coords.longitude;
 
-      // Generate 3 fake spots within ~10 km
-      let spots = [];
-      for (let i = 0; i < 3; i++) {
-        let fakeLat = lat + (Math.random() - 0.5) * 0.1;  // ~10km variation
-        let fakeLng = lng + (Math.random() - 0.5) * 0.1;
-        spots.push(fakeLat + "," + fakeLng);
+        // Generate 3 fake spots within ~10 km
+        let spots = [];
+        for (let i = 0; i < 3; i++) {
+          let fakeLat = lat + (Math.random() - 0.5) * 0.1; // ~10km variation
+          let fakeLng = lng + (Math.random() - 0.5) * 0.1;
+          spots.push(fakeLat + "," + fakeLng);
+        }
+
+        // Build Google Maps URL with multiple points
+        let mapsUrl = "https://www.google.com/maps/dir/" + spots.join("/");
+        window.open(mapsUrl, "_blank");
+      },
+      function(error) {
+        // Alert message if user denies location
+        if (error.code === error.PERMISSION_DENIED) {
+          alert("Location access denied. Unable to show nearby spots.");
+        } else {
+          alert("Unable to get your location. Please try again.");
+        }
       }
-
-      // Build Google Maps URL with multiple points
-      let mapsUrl = "https://www.google.com/maps/dir/" + spots.join("/");
-      window.open(mapsUrl, "_blank");
-    }, function(error) {
-      // If user denies location → fallback to Hyderabad
-      let mapsUrl = "https://www.google.com/maps/dir/17.385044,78.486671/17.395044,78.496671/17.405044,78.476671";
-      window.open(mapsUrl, "_blank");
-    });
+    );
   } else {
     alert("Geolocation not supported in your browser.");
   }
@@ -178,7 +185,7 @@ function handleImageClick() {
             }
 
             try {
-                let response = await fetch("https://script.google.com/macros/s/AKfycby9jGJDddIqJvulDTRPzyt02XMsOKHwskpLWEPJKcAziW2Cn9toBN9ZWpQxkgduCmPWBw/exec", {
+                let response = await fetch("https://script.google.com/macros/s/AKfycbyj8V62zDeEeEMFiQIBetKQxJbhuHDSCEhA8kYLLSGAzbM0T6JZKc9q0rpxRpLN9kXfNw/exec", {
                     method: "POST",
                     mode: "no-cors",
                     body: JSON.stringify(formData),
@@ -188,7 +195,7 @@ function handleImageClick() {
                 if (statusDiv) {
                     statusDiv.style.backgroundColor = "#d4edda";
                     statusDiv.style.color = "#155724";
-                    statusDiv.textContent = "Thank you for trusting TheDome!";
+                    statusDiv.textContent = "Thank you for trusting TheDome! 🎉 You’ve received a free, safe parking space for one week. We’re not yet in your area, but don’t worry — we’ll notify you as soon as we set up our secure parking spaces near your locality.";
                 }
 
                 if (btnText) {
@@ -214,7 +221,7 @@ function handleImageClick() {
                         formDataAlt.append(key, formData[key]);
                     });
 
-                    await fetch("https://script.google.com/macros/s/AKfycby9jGJDddIqJvulDTRPzyt02XMsOKHwskpLWEPJKcAziW2Cn9toBN9ZWpQxkgduCmPWBw/exec", {
+                    await fetch("https://script.google.com/macros/s/AKfycbyj8V62zDeEeEMFiQIBetKQxJbhuHDSCEhA8kYLLSGAzbM0T6JZKc9q0rpxRpLN9kXfNw/exec", {
                         method: "POST",
                         mode: "no-cors",
                         body: formDataAlt
@@ -223,7 +230,7 @@ function handleImageClick() {
                     if (statusDiv) {
                         statusDiv.style.backgroundColor = "#d4edda";
                         statusDiv.style.color = "#155724";
-                        statusDiv.textContent = "Thank you for trusting TheDome!";
+                        statusDiv.textContent = "Thank you for trusting TheDome! 🎉 You’ve received a free, safe parking space for one week. We’re not yet in your area, but don’t worry — we’ll notify you as soon as we set up our secure parking spaces near your locality.";
                     }
 
                     if (btnText) {
@@ -231,7 +238,6 @@ function handleImageClick() {
                     }
 
                     document.getElementById("contactForm").reset();
-
                     setTimeout(() => {
                         if (btnText) {
                             btnText.textContent = "Request a spot";
@@ -290,7 +296,7 @@ function handleImageClick() {
             }
 
             try {
-                let response = await fetch("https://script.google.com/macros/s/AKfycby9jGJDddIqJvulDTRPzyt02XMsOKHwskpLWEPJKcAziW2Cn9toBN9ZWpQxkgduCmPWBw/exec", {
+                let response = await fetch("https://script.google.com/macros/s/AKfycbyj8V62zDeEeEMFiQIBetKQxJbhuHDSCEhA8kYLLSGAzbM0T6JZKc9q0rpxRpLN9kXfNw/exec", {
                     method: "POST",
                     mode: "no-cors",
                     body: JSON.stringify(formData),
@@ -300,7 +306,7 @@ function handleImageClick() {
                 if (statusDiv) {
                     statusDiv.style.backgroundColor = "#d4edda";
                     statusDiv.style.color = "#155724";
-                    statusDiv.textContent = "Thank you for trusting TheDome! 🎉 You’ve received a free, safe parking space for one week. We’re not yet in your area, but don’t worry — we’ll notify you as soon as we set up our secure parking spaces near your locality.";
+                    statusDiv.textContent = "Thank you for trusting TheDome!.";
                 }
 
                 // Reset form and close popup after 2 seconds
@@ -318,7 +324,7 @@ function handleImageClick() {
                         formDataAlt.append(key, formData[key]);
                     });
 
-                    await fetch("https://script.google.com/macros/s/AKfycby9jGJDddIqJvulDTRPzyt02XMsOKHwskpLWEPJKcAziW2Cn9toBN9ZWpQxkgduCmPWBw/exec", {
+                    await fetch("https://script.google.com/macros/s/AKfycbyj8V62zDeEeEMFiQIBetKQxJbhuHDSCEhA8kYLLSGAzbM0T6JZKc9q0rpxRpLN9kXfNw/exec", {
                         method: "POST",
                         mode: "no-cors",
                         body: formDataAlt
@@ -327,7 +333,7 @@ function handleImageClick() {
                     if (statusDiv) {
                         statusDiv.style.backgroundColor = "#d4edda";
                         statusDiv.style.color = "#155724";
-                        statusDiv.textContent = "Thank you for trusting TheDome! 🎉 You’ve received a free, safe parking space for one week. We’re not yet in your area, but don’t worry — we’ll notify you as soon as we set up our secure parking spaces near your locality.";
+                        statusDiv.textContent = "Thank you for trusting TheDome!";
                     }
 
                     document.getElementById("customerForm").reset();
@@ -354,41 +360,3 @@ function handleImageClick() {
         });
 /// End Script Popcard
 
-//Location 
-function fetchUserCity() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(success, error);
-  } else {
-    document.getElementById("popupCity").value = "Geolocation not supported";
-  }
-}
-
-function success(position) {
-  const lat = position.coords.latitude;
-  const lon = position.coords.longitude;
-
-  // Directly fetch city from OpenStreetMap Nominatim (Free API)
-  fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
-    .then(res => res.json())
-    .then(data => {
-      let city = data.address.city || data.address.town || data.address.village || data.address.state;
-      document.getElementById("popupCity").value = city || "City not found";
-    })
-    .catch(() => {
-      document.getElementById("popupCity").value = "Unable to fetch city";
-    });
-}
-
-function error() {
-  document.getElementById("popupCity").value = "Permission denied";
-}
-
-// Run when popup opens
-function openPopup() {
-  document.getElementById("popupOverlay").style.display = "block";
-  fetchUserCity();
-}
-
-function closePopup() {
-  document.getElementById("popupOverlay").style.display = "none";
-}
