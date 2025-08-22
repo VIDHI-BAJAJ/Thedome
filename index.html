@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TheDome</title>
-    <link rel = "stylesheet"  href = "./style.css"> 
+    <link rel="stylesheet" href="./style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
-    <link rel ="icon" type="image/png" href="./images/android-chrome-192x192.png">
-    <link rel ="icon" type="image/png" href="./images/android-chrome-512x512.png">
-    <link rel ="icon" type="image/png" href="./images/apple-touch-icon.png">
-    <link rel ="icon" type="image/png" href="./images/favicon-32x32.png">
-    <link rel ="icon" type="image/png" href="./images/favicon-16x16.png">
+    <link rel="icon" type="image/png" href="./images/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" href="./images/android-chrome-512x512.png">
+    <link rel="icon" type="image/png" href="./images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="./images/favicon-32x32.png">
+    <link rel="icon" type="image/png" href="./images/favicon-16x16.png">
     <link rel="manifest" href="./images/site.webmanifest">
 </head>
+
 <body>
-<!-- Navbar Section -->
+    <!-- Navbar Section -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">
                 <div class="logo-icon">
-                    <img src = "./images/Logo.png" class="logoimg" />
+                    <img src="./images/Logo.png" class="logoimg" />
                 </div>
                 <span class="logo-text">TheDome</span>
             </a>
@@ -66,25 +68,27 @@
             </ul>
         </div>
     </nav>
-<!-- End Navbar Section -->
+    <!-- End Navbar Section -->
 
-<!-- Banner Section -->
- 
+    <!-- Banner Section -->
+
     <div class="banner">
         <div class="banner-content">
             <div class="left-content">
                 <h1 class="title">A safe place for your car.</h1>
                 <p class="description">
-                    Book verified, secured parking spots near your home, office, 
-                    or events. Real-time availability, cashless payments, and 24/7 
+                    Book verified, secured parking spots near your home, office,
+                    or events. Real-time availability, cashless payments, and 24/7
                     support so you never park on the roadside again.
                 </p>
-                
+
                 <div class="buttons">
-                    <button class="btn-bannerprimary" onclick="handleGetStarted()"><a href="#contact">Get Started</a></button>
-                    <button class="btn-bannersecondary" onclick="handleSeeHowItWorks()"><a href="#how-it-works">See how it works</a></button>
+                    <button class="btn-bannerprimary" onclick="handleGetStarted()"><a href="#contact">Get
+                            Started</a></button>
+                    <button class="btn-bannersecondary" onclick="handleSeeHowItWorks()"><a href="#how-it-works">See how
+                            it works</a></button>
                 </div>
-                
+
                 <div class="stats">
                     <div class="stat-item">
                         <span class="stat-number">1500+</span>
@@ -100,201 +104,213 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="right-content" onclick="handleImageClick()">
-                <img src="./images/Parking.jpg" 
-                     alt="Secure parking facility" 
-                     class="hero-image">
+                <img src="./images/Parking.jpg" alt="Secure parking facility" class="hero-image">
                 <div class="location-badge">
                     <svg class="location-icon" viewBox="0 0 24 24">
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        <path
+                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                     </svg>
-                     Nearby safe parking spots.
+                    Nearby safe parking spots.
                 </div>
             </div>
         </div>
     </div>
-<!-- End Banner Section -->
- <!-- Why Choose Us -->
-  <section>
-    <div class="Choose-section" id = "features">
-        <div class="section-header">
-            <h2 class="Choose-title">Why choose TheDome?</h2>
-            <p class="section-description">
-               End roadside Chaos, we build a fully enclosed safe parking
-place for your car. Guess what, We take full responsibility for your car.
-            </p>
-        </div>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon secure">
-                    <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11C15.4,11 16,11.4 16,12V16C16,16.6 15.6,17 15,17H9C8.4,17 8,16.6 8,16V12C8,11.4 8.4,11 9,11V10C9,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.2,9 10.2,10V11H13.8V10C13.8,9 12.8,8.2 12,8.2Z"/>
-                    </svg>
-                </div>
-                <h3 class="feature-title">Secure & monitored</h3>
-                <p class="feature-description">
-                    CCTV, gated access, and verified hosts to safeguard your vehicle.
-                </p>
-            </div>
+    <!-- End Banner Section -->
 
-            <div class="feature-card">
-                <div class="feature-icon access">
-                    <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"/>
-                    </svg>
-                </div>
-                <h3 class="feature-title">24/7 access</h3>
-                <p class="feature-description">
-                    Enter and exit anytime with QR/mobile access and live support.
+    <!-- Why Choose Us -->
+    <section>
+        <div class="Choose-section" id="features">
+            <div class="section-header">
+                <h2 class="Choose-title">Why choose TheDome?</h2>
+                <p class="section-description">
+                    End roadside Chaos, we build a fully enclosed safe parking
+                    place for your car. Guess what, We take full responsibility for your car.
                 </p>
             </div>
-
-            <div class="feature-card">
-                <div class="feature-icon payment">
-                    <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4M20,18H4V12H20V18M20,6V10H4V6H20M6,14H12V16H6V14Z"/>
-                    </svg>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon secure">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11C15.4,11 16,11.4 16,12V16C16,16.6 15.6,17 15,17H9C8.4,17 8,16.6 8,16V12C8,11.4 8.4,11 9,11V10C9,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.2,9 10.2,10V11H13.8V10C13.8,9 12.8,8.2 12,8.2Z" />
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Secure & monitored</h3>
+                    <p class="feature-description">
+                        CCTV, gated access, and verified hosts to safeguard your vehicle.
+                    </p>
                 </div>
-                <h3 class="feature-title">Cashless payments</h3>
-                <p class="feature-description">
-                    UPI/cards with instant receipts and GST-ready invoices.
-                </p>
+
+                <div class="feature-card">
+                    <div class="feature-icon access">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z" />
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">24/7 access</h3>
+                    <p class="feature-description">
+                        Enter and exit anytime with QR/mobile access and live support.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon payment">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4M20,18H4V12H20V18M20,6V10H4V6H20M6,14H12V16H6V14Z" />
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Cashless payments</h3>
+                    <p class="feature-description">
+                        UPI/cards with instant receipts and GST-ready invoices.
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
     </section>
     <!-- End Why Choose Us -->
 
-<!-- How It Works Section -->
- <section>
-     <div class="work-section" id ="how-it-works">
-        <!-- How It Works Steps -->
-        <h2 class="work-title">How it works</h2>
-        
-        <div class="steps-container">
-            <div class="step-card animate" onclick="handleStepClick('search')">
-                <div class="step-badge">Step 1</div>
-                <h3 class="step-title">Search & choose</h3>
-                <p class="step-description">
-                    Enter your area to see nearby secure spots with live availability and pricing.
-                </p>
-            </div>
+    <!-- How It Works Section -->
+    <section>
+        <div class="work-section" id="how-it-works">
+            <!-- How It Works Steps -->
+            <h2 class="work-title">How it works</h2>
 
-            <div class="step-card animate" onclick="handleStepClick('book')">
-                <div class="step-badge">Step 2</div>
-                <h3 class="step-title">Book & pay</h3>
-                <p class="step-description">
-                    Reserve instantly with UPI/card. Get a QR pass and host directions.
-                </p>
-            </div>
-
-            <div class="step-card animate" onclick="handleStepClick('park')">
-                <div class="step-badge">Step 3</div>
-                <h3 class="step-title">Park with peace</h3>
-                <p class="step-description">
-                    Arrive, scan, and park. Your car stays within safe limits—always.
-                </p>
-            </div>
-        </div>
-
-        <!-- CTA Banner -->
-        <div class="cta-banner animate">
-            <div class="cta-content">
-                <h3 class="cta-title">Find a parking spot and contact us.</h3>
-                <p class="cta-subtitle">Book a nearby spot in under 60 seconds.</p>
-            </div>
-            <div class="cta-buttons">
-                <button class="btn btn-primary" onclick="handleContactUs()"><a href="#contact">Contact us</a></button>
-                <button class="btn btn-secondary" onclick="handleLearnMore()"><a href="#features"></a>Learn more</a></button>
-            </div>
-        </div>
-    </div>
-
-</section>
-<!-- End How It Works Section -->
-
-<!-- Contact Form -->
- <section>
-     <div class="contact-section" id ="contact">
-        <div class="header">
-            <h1>Get in touch</h1>
-            <p>We usually respond within a few hours.</p>
-        </div>
-
-        <div class="content">
-            <div class="contact-info">
-                <div class="info-item">
-                    <svg class="info-icon phone-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-                    </svg>
-                    <div class="info-content">
-                        <div class="info-label">Call / WhatsApp</div>
-                        <div class="info-value">+91 9535051145</div>
-                    </div>
+            <div class="steps-container">
+                <div class="step-card animate" onclick="handleStepClick('search')">
+                    <div class="step-badge">Step 1</div>
+                    <h3 class="step-title">Search & choose</h3>
+                    <p class="step-description">
+                        Enter your area to see nearby secure spots with live availability and pricing.
+                    </p>
                 </div>
 
-                <div class="info-item">
-                    <svg class="info-icon email-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                    </svg>
-                    <div class="info-content">
-                        <div class="info-label">Email</div>
-                        <div class="info-value">hello@thedome.in</div>
-                    </div>
+                <div class="step-card animate" onclick="handleStepClick('book')">
+                    <div class="step-badge">Step 2</div>
+                    <h3 class="step-title">Book & pay</h3>
+                    <p class="step-description">
+                        Reserve instantly with UPI/card. Get a QR pass and host directions.
+                    </p>
                 </div>
 
-                <div class="info-item">
-                    <svg class="info-icon website-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                    </svg>
-                    <div class="info-content">
-                        <div class="info-label">Website</div>
-                        <div class="info-value">TheDome.in</div>
-                    </div>
+                <div class="step-card animate" onclick="handleStepClick('park')">
+                    <div class="step-badge">Step 3</div>
+                    <h3 class="step-title">Park with peace</h3>
+                    <p class="step-description">
+                        Arrive, scan, and park. Your car stays within safe limits—always.
+                    </p>
                 </div>
             </div>
-            <div class="form-section">
-  <form id="contactForm">
-    <div class="form-row">
-      <input type="text" id="contactName" name="name" placeholder="Your name" required>
-      <input type="text" id="contactPhone" name="contact" placeholder="Email or phone" required>
-    </div>
 
-    <div class="form-row-three">
-      <input type="text" id="contactCity" name="location" placeholder="Your location/area" required>
-      <input type="text" id="contactBudget" name="budget" placeholder="Monthly budget (₹)" required>
-      <input type="text" id="contactCar" name="car" placeholder="Type Of Car" required>
-    </div>
-
-    <div class="form-group">
-      <textarea id="contactMessage" name="message" placeholder="Message" required></textarea>
-    </div>
-
-    <button type="submit" class="submit-btn">
-      <span id="btnText">Request a spot</span>
-    </button>
-
-    <div class="privacy-text">
-      By submitting, you agree to our terms & privacy policy.
-    </div>
-  </form>
-  
-  <div id="contactStatusMessage" style="display:none; padding:10px; margin-top:10px; border-radius:5px;"></div>
-</div>
+            <!-- CTA Banner -->
+            <div class="cta-banner animate">
+                <div class="cta-content">
+                    <h3 class="cta-title">Find a parking spot and contact us.</h3>
+                    <p class="cta-subtitle">Book a nearby spot in under 60 seconds.</p>
+                </div>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" onclick="handleContactUs()"><a href="#contact">Contact
+                            us</a></button>
+                    <button class="btn btn-secondary" onclick="handleLearnMore()"><a href="#features"></a>Learn
+                        more</a></button>
+                </div>
             </div>
         </div>
-    </div>
+
     </section>
-<!-- End Contact Form  -->
-     <!-- Footer Section -->
+    <!-- End How It Works Section -->
+
+    <!-- Contact Form -->
+    <section>
+        <div class="contact-section" id="contact">
+            <div class="header">
+                <h1>Get in touch</h1>
+                <p>We usually respond within a few hours.</p>
+            </div>
+
+            <div class="content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <svg class="info-icon phone-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                        </svg>
+                        <div class="info-content">
+                            <div class="info-label">Call / WhatsApp</div>
+                            <div class="info-value">+91 9535051145</div>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <svg class="info-icon email-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                        </svg>
+                        <div class="info-content">
+                            <div class="info-label">Email</div>
+                            <div class="info-value">hello@thedome.in</div>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <svg class="info-icon website-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+                        </svg>
+                        <div class="info-content">
+                            <div class="info-label">Website</div>
+                            <div class="info-value">TheDome.in</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <input type="text" id="contactName" name="name" placeholder="Your name" required>
+                            <input type="text" id="contactPhone" name="contact" placeholder="Email or phone" required>
+                        </div>
+
+                        <div class="form-row-three">
+                            <input type="text" id="contactCity" name="location" placeholder="Your location/area"
+                                required>
+                            <input type="text" id="contactBudget" name="budget" placeholder="Monthly budget (₹)"
+                                required>
+                            <input type="text" id="contactCar" name="car" placeholder="Type Of Car" required>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea id="contactMessage" name="message" placeholder="Message" required></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <span id="btnText">Request a spot</span>
+                        </button>
+
+                        <div class="privacy-text">
+                            By submitting, you agree to our terms & privacy policy.
+                        </div>
+                    </form>
+
+                    <div id="contactStatusMessage"
+                        style="display:none; padding:10px; margin-top:10px; border-radius:5px;"></div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- End Contact Form  -->
+
+    <!-- Footer Section -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-left">
                 <div class="copyright">
                     <span class="copyright-icon">©</span>
                     <span>2025</span>
-                    <span class="brand-name">TheDome.in</span>
+                    <span class="brand-name">TheDome</span>
                     <span class="tagline">• A safe place for your car.</span>
                 </div>
             </div>
@@ -305,239 +321,31 @@ place for your car. Guess what, We take full responsibility for your car.
             </div>
         </div>
     </footer>
-<!-- Footer End -->
+    <!-- Footer End -->
 
-<!-- Customer Popup Form -->
-<div class="overlay" id="popupOverlay" style="display:none;">
-  <div class="popup">
-    <!-- Close Button -->
-    <span class="close-btn" onclick="closePopup()">✖</span>
-    
-    <h2>Welcome! Tell us about you</h2>
-    <form id="customerForm">
-        <input type="text" id="popupName" placeholder="Your Name" required>
-        <input type="tel" id="popupPhone" placeholder="Phone Number" required>
-        <input type="text" id="popupCity" placeholder="Location" required>
-        <input type="text" id="popupCar" placeholder="Type of Car" required>
-        <input type="number" id="popupBudget" placeholder="Monthly budget (₹)" required>
-        <input type="text" id="popupMessage" placeholder="Message" required>
-        <button type="submit">Submit</button>
-    </form>
-    
-    <div id="popupStatusMessage" style="display:none; padding:10px; margin-top:10px; border-radius:5px;"></div>
-  </div>
-</div>
+    <!-- Customer Popup Form -->
+    <div class="overlay" id="popupOverlay" style="display:none;">
+        <div class="popup">
+            <!-- Close Button -->
+            <span class="close-btn" onclick="closePopup()">✖</span>
 
-<script>
+            <h2>Welcome! Tell us about you</h2>
+            <form id="customerForm">
+                <input type="text" id="popupName" placeholder="Your Name" required>
+                <input type="tel" id="popupPhone" placeholder="Phone Number" required>
+                <input type="text" id="popupCity" placeholder="Location" required>
+                <input type="text" id="popupCar" placeholder="Type of Car" required>
+                <input type="number" id="popupBudget" placeholder="Monthly budget (₹)" required>
+                <input type="text" id="popupMessage" placeholder="Message" required>
+                <button type="submit">Submit</button>
+            </form>
 
-function closePopup() {
-    document.getElementById("popupOverlay").style.display = "none";
-}
+            <div id="popupStatusMessage" style="display:none; padding:10px; margin-top:10px; border-radius:5px;"></div>
+        </div>
+    </div>
+<!-- End Pop Card -->
 
-function showPopup() {
-    document.getElementById("popupOverlay").style.display = "flex";
-}
+<script src="./script.js"></script>
+</body>
 
-// Updated form submission script
-document.getElementById("customerForm").addEventListener("submit", async function(e) {
-    e.preventDefault();
-
-    let formData = {
-        name: document.getElementById("popupName").value,
-        phone: document.getElementById("popupPhone").value,
-        city: document.getElementById("popupCity").value,
-        car: document.getElementById("popupCar").value,
-        budget: document.getElementById("popupBudget").value,
-        message: document.getElementById("popupMessage").value,
-    };
-
-    // Show loading message
-    let statusDiv = document.getElementById("popupStatusMessage");
-    if (statusDiv) {
-        statusDiv.style.display = "block";
-        statusDiv.style.backgroundColor = "#d1ecf1";
-        statusDiv.style.color = "#0c5460";
-        statusDiv.textContent = "Submitting...";
-    }
-
-    try {
-        let response = await fetch("https://script.google.com/macros/s/AKfycby9jGJDddIqJvulDTRPzyt02XMsOKHwskpLWEPJKcAziW2Cn9toBN9ZWpQxkgduCmPWBw/exec", {
-            method: "POST",
-            mode: "no-cors",
-            body: JSON.stringify(formData),
-            headers: { "Content-Type": "application/json" }
-        });
-
-        if (statusDiv) {
-            statusDiv.style.backgroundColor = "#d4edda";
-            statusDiv.style.color = "#155724";
-            statusDiv.textContent = "Thank you for trusting TheDome! 🎉 You’ve received a free, safe parking space for one week. We’re not yet in your area, but don’t worry — we’ll notify you as soon as we set up our secure parking spaces near your locality.";
-        }
-        
-        // Reset form and close popup after 2 seconds
-        document.getElementById("customerForm").reset();
-        setTimeout(() => {
-            closePopup();
-        }, 2000);
-
-    } catch (error) {
-        console.error("Primary method failed, trying alternative:", error);
-        
-        try {
-            let formDataAlt = new FormData();
-            Object.keys(formData).forEach(key => {
-                formDataAlt.append(key, formData[key]);
-            });
-
-            await fetch("https://script.google.com/macros/s/AKfycby9jGJDddIqJvulDTRPzyt02XMsOKHwskpLWEPJKcAziW2Cn9toBN9ZWpQxkgduCmPWBw/exec", {
-                method: "POST",
-                mode: "no-cors",
-                body: formDataAlt
-            });
-
-            if (statusDiv) {
-                statusDiv.style.backgroundColor = "#d4edda";
-                statusDiv.style.color = "#155724";
-                statusDiv.textContent = "Thank you for trusting TheDome! 🎉 You’ve received a free, safe parking space for one week. We’re not yet in your area, but don’t worry — we’ll notify you as soon as we set up our secure parking spaces near your locality.";
-            }
-            
-            document.getElementById("customerForm").reset();
-            setTimeout(() => {
-                closePopup();
-            }, 2000);
-
-        } catch (altError) {
-            console.error("Both methods failed:", altError);
-            if (statusDiv) {
-                statusDiv.style.backgroundColor = "#f8d7da";
-                statusDiv.style.color = "#721c24";
-                statusDiv.textContent = "Error submitting form. Please try again.";
-            }
-        }
-    }
-});
-
-// Close popup when clicking outside
-document.getElementById("popupOverlay").addEventListener("click", function(e) {
-    if (e.target === this) {
-        closePopup();
-    }
-});
-    </script>
-
-    
-<script>
-// Contact form submission
-document.getElementById("contactForm").addEventListener("submit", async function(e) {
-    e.preventDefault();
-
-    let formData = {
-        name: document.getElementById("contactName").value,
-        phone: document.getElementById("contactPhone").value,  // Maps to "contact" field
-        city: document.getElementById("contactCity").value,
-        car: document.getElementById("contactCar").value,
-        budget: document.getElementById("contactBudget").value,
-        message: document.getElementById("contactMessage").value,
-    };
-
-    // Show loading message
-    let statusDiv = document.getElementById("contactStatusMessage");
-    let submitBtn = document.querySelector(".submit-btn");
-    let btnText = document.getElementById("btnText");
-    
-    if (statusDiv) {
-        statusDiv.style.display = "block";
-        statusDiv.style.backgroundColor = "#d1ecf1";
-        statusDiv.style.color = "#0c5460";
-        statusDiv.textContent = "Submitting...";
-    }
-    
-    if (btnText) {
-        btnText.textContent = "Submitting...";
-        submitBtn.disabled = true;
-    }
-
-    try {
-        let response = await fetch("https://script.google.com/macros/s/AKfycby9jGJDddIqJvulDTRPzyt02XMsOKHwskpLWEPJKcAziW2Cn9toBN9ZWpQxkgduCmPWBw/exec", {
-            method: "POST",
-            mode: "no-cors",
-            body: JSON.stringify(formData),
-            headers: { "Content-Type": "application/json" }
-        });
-
-        if (statusDiv) {
-            statusDiv.style.backgroundColor = "#d4edda";
-            statusDiv.style.color = "#155724";
-            statusDiv.textContent = "Thank you for trusting TheDome! 🎉 You’ve received a free, safe parking space for one week. We’re not yet in your area, but don’t worry — we’ll notify you as soon as we set up our secure parking spaces near your locality.";
-        }
-        
-        if (btnText) {
-            btnText.textContent = "Submitted ✓";
-        }
-        
-        // Reset form after successful submission
-        document.getElementById("contactForm").reset();
-        
-        setTimeout(() => {
-            if (btnText) {
-                btnText.textContent = "Request a spot";
-                submitBtn.disabled = false;
-            }
-        }, 3000);
-
-    } catch (error) {
-        console.error("Primary method failed, trying alternative:", error);
-        
-        try {
-            let formDataAlt = new FormData();
-            Object.keys(formData).forEach(key => {
-                formDataAlt.append(key, formData[key]);
-            });
-
-            await fetch("https://script.google.com/macros/s/AKfycby9jGJDddIqJvulDTRPzyt02XMsOKHwskpLWEPJKcAziW2Cn9toBN9ZWpQxkgduCmPWBw/exec", {
-                method: "POST",
-                mode: "no-cors",
-                body: formDataAlt
-            });
-
-            if (statusDiv) {
-                statusDiv.style.backgroundColor = "#d4edda";
-                statusDiv.style.color = "#155724";
-                statusDiv.textContent = "Thank you for trusting TheDome! 🎉 You’ve received a free, safe parking space for one week. We’re not yet in your area, but don’t worry — we’ll notify you as soon as we set up our secure parking spaces near your locality.”";
-            }
-            
-            if (btnText) {
-                btnText.textContent = "Submitted ✓";
-            }
-            
-            document.getElementById("contactForm").reset();
-            
-            setTimeout(() => {
-                if (btnText) {
-                    btnText.textContent = "Request a spot";
-                    submitBtn.disabled = false;
-                }
-            }, 3000);
-
-        } catch (altError) {
-            console.error("Both methods failed:", altError);
-            if (statusDiv) {
-                statusDiv.style.backgroundColor = "#f8d7da";
-                statusDiv.style.color = "#721c24";
-                statusDiv.textContent = "Error submitting form. Please try again.";
-            }
-            
-            if (btnText) {
-                btnText.textContent = "Try Again";
-                submitBtn.disabled = false;
-            }
-        }
-    }
-});
-</script>
-
-
-
-    <script src="./script.js"></script>
-    </body>
-    </html>
+</html>

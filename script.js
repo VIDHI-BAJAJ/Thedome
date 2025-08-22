@@ -1,3 +1,4 @@
+// Hamburger Menu
 function toggleMobileMenu() {
             const hamburger = document.querySelector('.hamburger');
             const mobileMenu = document.getElementById('mobileMenu');
@@ -29,7 +30,9 @@ function toggleMobileMenu() {
             }
         });
 
-       
+// End Hamburger Menu
+  
+//  Google Map
 function handleImageClick() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -56,7 +59,9 @@ function handleImageClick() {
     alert("Geolocation not supported in your browser.");
   }
 }
+// End Google Map
 
+//Banner Start
         // Add scroll animations
         function animateOnScroll() {
             const banner = document.querySelector('.banner');
@@ -139,34 +144,212 @@ function handleImageClick() {
             distY = null;
         });
 
+// Banner End
 
-        // Show popup on first visit
-window.addEventListener("load", () => {
-  document.getElementById("popupOverlay").style.display = "flex";
-  detectCity();
-});
+// Contact Form Script
+        // Contact form submission
+        document.getElementById("contactForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
 
-// Detect City (no API key, just fallback text if denied)
-function detectCity() {
-  const cityInput = document.getElementById("custCity");
+            let formData = {
+                name: document.getElementById("contactName").value,
+                phone: document.getElementById("contactPhone").value,  // Maps to "contact" field
+                city: document.getElementById("contactCity").value,
+                car: document.getElementById("contactCar").value,
+                budget: document.getElementById("contactBudget").value,
+                message: document.getElementById("contactMessage").value,
+            };
 
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(async (pos) => {
-      let lat = pos.coords.latitude;
-      let lon = pos.coords.longitude;
+            // Show loading message
+            let statusDiv = document.getElementById("contactStatusMessage");
+            let submitBtn = document.querySelector(".submit-btn");
+            let btnText = document.getElementById("btnText");
 
-      try {
-        let res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
-        let data = await res.json();
-        let city = data.address.city || data.address.town || data.address.village || "Unknown";
-        cityInput.value = city;
-      } catch {
-        cityInput.value = "Unable to detect";
-      }
-    }, () => {
-      cityInput.value = "Location denied";
-    });
-  } else {
-    cityInput.value = "Not supported";
-  }
-}
+            if (statusDiv) {
+                statusDiv.style.display = "block";
+                statusDiv.style.backgroundColor = "#d1ecf1";
+                statusDiv.style.color = "#0c5460";
+                statusDiv.textContent = "Submitting...";
+            }
+
+            if (btnText) {
+                btnText.textContent = "Submitting...";
+                submitBtn.disabled = true;
+            }
+
+            try {
+                let response = await fetch("https://script.google.com/macros/s/AKfycby9jGJDddIqJvulDTRPzyt02XMsOKHwskpLWEPJKcAziW2Cn9toBN9ZWpQxkgduCmPWBw/exec", {
+                    method: "POST",
+                    mode: "no-cors",
+                    body: JSON.stringify(formData),
+                    headers: { "Content-Type": "application/json" }
+                });
+
+                if (statusDiv) {
+                    statusDiv.style.backgroundColor = "#d4edda";
+                    statusDiv.style.color = "#155724";
+                    statusDiv.textContent = "Thank you for trusting TheDome! 🎉 You’ve received a free, safe parking space for one week. We’re not yet in your area, but don’t worry — we’ll notify you as soon as we set up our secure parking spaces near your locality.";
+                }
+
+                if (btnText) {
+                    btnText.textContent = "Submitted ✓";
+                }
+
+                // Reset form after successful submission
+                document.getElementById("contactForm").reset();
+
+                setTimeout(() => {
+                    if (btnText) {
+                        btnText.textContent = "Request a spot";
+                        submitBtn.disabled = false;
+                    }
+                }, 3000);
+
+            } catch (error) {
+                console.error("Primary method failed, trying alternative:", error);
+
+                try {
+                    let formDataAlt = new FormData();
+                    Object.keys(formData).forEach(key => {
+                        formDataAlt.append(key, formData[key]);
+                    });
+
+                    await fetch("https://script.google.com/macros/s/AKfycby9jGJDddIqJvulDTRPzyt02XMsOKHwskpLWEPJKcAziW2Cn9toBN9ZWpQxkgduCmPWBw/exec", {
+                        method: "POST",
+                        mode: "no-cors",
+                        body: formDataAlt
+                    });
+
+                    if (statusDiv) {
+                        statusDiv.style.backgroundColor = "#d4edda";
+                        statusDiv.style.color = "#155724";
+                        statusDiv.textContent = "Thank you for trusting TheDome! 🎉 You’ve received a free, safe parking space for one week. We’re not yet in your area, but don’t worry — we’ll notify you as soon as we set up our secure parking spaces near your locality.”";
+                    }
+
+                    if (btnText) {
+                        btnText.textContent = "Submitted ✓";
+                    }
+
+                    document.getElementById("contactForm").reset();
+
+                    setTimeout(() => {
+                        if (btnText) {
+                            btnText.textContent = "Request a spot";
+                            submitBtn.disabled = false;
+                        }
+                    }, 3000);
+
+                } catch (altError) {
+                    console.error("Both methods failed:", altError);
+                    if (statusDiv) {
+                        statusDiv.style.backgroundColor = "#f8d7da";
+                        statusDiv.style.color = "#721c24";
+                        statusDiv.textContent = "Error submitting form. Please try again.";
+                    }
+
+                    if (btnText) {
+                        btnText.textContent = "Try Again";
+                        submitBtn.disabled = false;
+                    }
+                }
+            }
+        });
+
+// Contact Form End
+
+
+/// Script Of Popcard 
+   function closePopup() {
+            document.getElementById("popupOverlay").style.display = "none";
+        }
+
+        function showPopup() {
+            document.getElementById("popupOverlay").style.display = "flex";
+        }
+
+        // Updated form submission script
+        document.getElementById("customerForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            let formData = {
+                name: document.getElementById("popupName").value,
+                phone: document.getElementById("popupPhone").value,
+                city: document.getElementById("popupCity").value,
+                car: document.getElementById("popupCar").value,
+                budget: document.getElementById("popupBudget").value,
+                message: document.getElementById("popupMessage").value,
+            };
+
+            // Show loading message
+            let statusDiv = document.getElementById("popupStatusMessage");
+            if (statusDiv) {
+                statusDiv.style.display = "block";
+                statusDiv.style.backgroundColor = "#d1ecf1";
+                statusDiv.style.color = "#0c5460";
+                statusDiv.textContent = "Submitting...";
+            }
+
+            try {
+                let response = await fetch("https://script.google.com/macros/s/AKfycby9jGJDddIqJvulDTRPzyt02XMsOKHwskpLWEPJKcAziW2Cn9toBN9ZWpQxkgduCmPWBw/exec", {
+                    method: "POST",
+                    mode: "no-cors",
+                    body: JSON.stringify(formData),
+                    headers: { "Content-Type": "application/json" }
+                });
+
+                if (statusDiv) {
+                    statusDiv.style.backgroundColor = "#d4edda";
+                    statusDiv.style.color = "#155724";
+                    statusDiv.textContent = "Thank you for trusting TheDome! 🎉 You’ve received a free, safe parking space for one week. We’re not yet in your area, but don’t worry — we’ll notify you as soon as we set up our secure parking spaces near your locality.";
+                }
+
+                // Reset form and close popup after 2 seconds
+                document.getElementById("customerForm").reset();
+                setTimeout(() => {
+                    closePopup();
+                }, 2000);
+
+            } catch (error) {
+                console.error("Primary method failed, trying alternative:", error);
+
+                try {
+                    let formDataAlt = new FormData();
+                    Object.keys(formData).forEach(key => {
+                        formDataAlt.append(key, formData[key]);
+                    });
+
+                    await fetch("https://script.google.com/macros/s/AKfycby9jGJDddIqJvulDTRPzyt02XMsOKHwskpLWEPJKcAziW2Cn9toBN9ZWpQxkgduCmPWBw/exec", {
+                        method: "POST",
+                        mode: "no-cors",
+                        body: formDataAlt
+                    });
+
+                    if (statusDiv) {
+                        statusDiv.style.backgroundColor = "#d4edda";
+                        statusDiv.style.color = "#155724";
+                        statusDiv.textContent = "Thank you for trusting TheDome! 🎉 You’ve received a free, safe parking space for one week. We’re not yet in your area, but don’t worry — we’ll notify you as soon as we set up our secure parking spaces near your locality.";
+                    }
+
+                    document.getElementById("customerForm").reset();
+                    setTimeout(() => {
+                        closePopup();
+                    }, 2000);
+
+                } catch (altError) {
+                    console.error("Both methods failed:", altError);
+                    if (statusDiv) {
+                        statusDiv.style.backgroundColor = "#f8d7da";
+                        statusDiv.style.color = "#721c24";
+                        statusDiv.textContent = "Error submitting form. Please try again.";
+                    }
+                }
+            }
+        });
+
+        // Close popup when clicking outside
+        document.getElementById("popupOverlay").addEventListener("click", function (e) {
+            if (e.target === this) {
+                closePopup();
+            }
+        });
+/// End Script Popcard
