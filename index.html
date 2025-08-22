@@ -326,26 +326,35 @@
     </footer>
     <!-- Footer End -->
 
-    <!-- Customer Popup Form -->
-    <div class="overlay" id="popupOverlay">
-        <div class="popup">
-            <!-- Close Button -->
-            <span class="close-btn" onclick="closePopup()">✖</span>
-            <h2>Welcome! Tell us about you</h2>
-            <form id="customerForm">
-                <input type="text" id="popupName" placeholder="Your Name" required>
-                <input type="tel" id="popupPhone" placeholder="Phone Number" required>
-                <input type="text" id="popupCity" placeholder="Location" required>
-                <input type="text" id="popupCar" placeholder="Type of Car" required>
-                <input type="number" id="popupBudget" placeholder="Monthly budget (₹)" required>
-                <input type="text" id="popupMessage" placeholder="Message" required>
-                <button type="submit">Submit</button>
-            </form>
+<!-- Customer Popup Form -->
+<div class="overlay" id="popupOverlay">
+    <div class="popup">
+        <!-- Close Button -->
+        <span class="close-btn" onclick="closePopup()">✖</span>
+        <h2>Book a free and safe Parking Space with few details</h2>
+        <form id="customerForm">
+            <input type="text" id="popupName" placeholder="Your Name" required>
 
-            <div id="popupStatusMessage" style="display:none; padding:10px; margin-top:10px; border-radius:5px;"></div>
-        </div>
+            <!-- Phone Number: Only digits -->
+            <input type="tel" id="popupPhone" placeholder="Phone Number" 
+                   pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number" required>
+
+            <input type="text" id="popupCity" placeholder="Location" required>
+            <input type="text" id="popupCar" placeholder="Car Model" required>
+
+            <!-- Budget: Only digits -->
+            <input type="number" id="popupBudget" placeholder="Budget (₹)" 
+                   oninput="this.value = this.value.replace(/[^0-9]/g,'');" required>
+
+            <input type="text" id="popupMessage" placeholder="Anything you want to ask" required>
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="popupStatusMessage" style="display:none; padding:10px; margin-top:10px; border-radius:5px;"></div>
     </div>
+</div>
 <!-- End Pop Card -->
+
 
 <script src="./script.js"></script>
 </body>

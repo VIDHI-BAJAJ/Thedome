@@ -188,7 +188,7 @@ function handleImageClick() {
                 if (statusDiv) {
                     statusDiv.style.backgroundColor = "#d4edda";
                     statusDiv.style.color = "#155724";
-                    statusDiv.textContent = "Thank you for trusting TheDome! 🎉 You’ve received a free, safe parking space for one week. We’re not yet in your area, but don’t worry — we’ll notify you as soon as we set up our secure parking spaces near your locality.";
+                    statusDiv.textContent = "Thank you for trusting TheDome!";
                 }
 
                 if (btnText) {
@@ -223,7 +223,7 @@ function handleImageClick() {
                     if (statusDiv) {
                         statusDiv.style.backgroundColor = "#d4edda";
                         statusDiv.style.color = "#155724";
-                        statusDiv.textContent = "Thank you for trusting TheDome! 🎉 You’ve received a free, safe parking space for one week. We’re not yet in your area, but don’t worry — we’ll notify you as soon as we set up our secure parking spaces near your locality.”";
+                        statusDiv.textContent = "Thank you for trusting TheDome!";
                     }
 
                     if (btnText) {
@@ -353,3 +353,42 @@ function handleImageClick() {
             }
         });
 /// End Script Popcard
+
+//Location 
+function fetchUserCity() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(success, error);
+  } else {
+    document.getElementById("popupCity").value = "Geolocation not supported";
+  }
+}
+
+function success(position) {
+  const lat = position.coords.latitude;
+  const lon = position.coords.longitude;
+
+  // Directly fetch city from OpenStreetMap Nominatim (Free API)
+  fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
+    .then(res => res.json())
+    .then(data => {
+      let city = data.address.city || data.address.town || data.address.village || data.address.state;
+      document.getElementById("popupCity").value = city || "City not found";
+    })
+    .catch(() => {
+      document.getElementById("popupCity").value = "Unable to fetch city";
+    });
+}
+
+function error() {
+  document.getElementById("popupCity").value = "Permission denied";
+}
+
+// Run when popup opens
+function openPopup() {
+  document.getElementById("popupOverlay").style.display = "block";
+  fetchUserCity();
+}
+
+function closePopup() {
+  document.getElementById("popupOverlay").style.display = "none";
+}
