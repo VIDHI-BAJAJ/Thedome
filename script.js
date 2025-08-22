@@ -306,7 +306,7 @@ function handleImageClick() {
                 if (statusDiv) {
                     statusDiv.style.backgroundColor = "#d4edda";
                     statusDiv.style.color = "#155724";
-                    statusDiv.textContent = "Thank you for trusting TheDome!.";
+                    statusDiv.textContent = "Booking request submitted successfully! We will contact you soon.";
                 }
 
                 // Reset form and close popup after 2 seconds
@@ -333,7 +333,7 @@ function handleImageClick() {
                     if (statusDiv) {
                         statusDiv.style.backgroundColor = "#d4edda";
                         statusDiv.style.color = "#155724";
-                        statusDiv.textContent = "Thank you for trusting TheDome!";
+                        statusDiv.textContent = "Booking request submitted successfully! We will contact you soon.";
                     }
 
                     document.getElementById("customerForm").reset();
