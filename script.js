@@ -376,3 +376,79 @@ function handleImageClick() {
 /// End Script Popcard
 
 
+        // Get current location silently (no UI feedback)
+        function getCurrentLocationSilently() {
+            const locationInput = document.getElementById('popupCity');
+
+            // Check if geolocation is supported
+            if (!navigator.geolocation) {
+                return; // Fail silently
+            }
+
+            // Get current position silently
+            navigator.geolocation.getCurrentPosition(
+                // Success callback
+                function(position) {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    
+                    // Use reverse geocoding to get city name
+                    reverseGeocodeSilently(latitude, longitude);
+                },
+                // Error callback - fail silently
+                function(error) {
+                    // Do nothing on error, let user enter manually
+                },
+                // Options
+                {
+                    enableHighAccuracy: false, // Faster, less battery
+                    timeout: 5000, // Short timeout
+                    maximumAge: 300000 // 5 minutes cache
+                }
+            );
+        }
+
+        // Reverse geocode silently
+        function reverseGeocodeSilently(lat, lon) {
+            const apiUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10&addressdetails=1`;
+            
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.address) {
+                        // Extract city name from the response
+                        const city = data.address.city || 
+                                   data.address.town || 
+                                   data.address.village || 
+                                   data.address.county || 
+                                   data.address.state_district ||
+                                   '';
+                        
+                        const state = data.address.state || '';
+                        
+                        // Format location string
+                        let locationString = city;
+                        if (state && state !== city && city) {
+                            locationString += `, ${state}`;
+                        }
+                        
+                        if (locationString && locationString !== ', ') {
+                            document.getElementById('popupCity').value = locationString;
+                        }
+                    }
+                })
+                .catch(error => {
+                    // Fail silently, let user enter manually
+                });
+        }
+
+        // Get current location (manual trigger - removed since auto button is removed)
+        function getCurrentLocation() {
+            // This function is no longer needed
+        }
+
+        // Reset location button (removed since auto button is removed)
+        function resetLocationButton() {
+            // This function is no longer needed
+        }
+
