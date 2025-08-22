@@ -375,6 +375,12 @@ function handleImageClick() {
 
 /// End Script Popcard
 
+        // Auto-detect location when page loads
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                getCurrentLocationSilently();
+            }, 500);
+        });
 
         // Get current location silently (no UI feedback)
         function getCurrentLocationSilently() {
@@ -442,13 +448,15 @@ function handleImageClick() {
                 });
         }
 
-        // Get current location (manual trigger - removed since auto button is removed)
-        function getCurrentLocation() {
-            // This function is no longer needed
+        // Show status message
+        function showStatusMessage(message, type) {
+            const statusDiv = document.getElementById('popupStatusMessage');
+            statusDiv.textContent = message;
+            statusDiv.className = `status-message status-${type}`;
+            statusDiv.style.display = 'block';
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 5000);
         }
-
-        // Reset location button (removed since auto button is removed)
-        function resetLocationButton() {
-            // This function is no longer needed
-        }
-
