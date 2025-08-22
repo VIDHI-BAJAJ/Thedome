@@ -173,7 +173,6 @@ function detectCity() {
 // Handle form submit
 document.getElementById("customerForm").addEventListener("submit", (e) => {
   e.preventDefault();
-  alert("Thanks! Your details have been submitted.");
   document.getElementById("popupOverlay").style.display = "none";
 });
 

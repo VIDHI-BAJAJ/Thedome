@@ -2372,6 +2372,8 @@ textarea {
      transition: color 0.2s;
 }
 
+
+
 /* Animation */
 @keyframes popupScale {
   from { transform: scale(0.8); opacity: 0; }
