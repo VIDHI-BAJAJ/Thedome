@@ -374,89 +374,215 @@ function handleImageClick() {
         });
 
 /// End Script Popcard
+ 
+//Popcard Location Start
+// Auto-detect location when page loads for popup
+window.addEventListener('load', function() {
+    setTimeout(() => {
+        getPopupLocationSilently();
+    }, 500);
+});
 
-        // Auto-detect location when page loads
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                getCurrentLocationSilently();
-            }, 500);
-        });
+// Get current location silently for popup (no UI feedback)
+function getPopupLocationSilently() {
+    const locationInput = document.getElementById('popupCity');
 
-        // Get current location silently (no UI feedback)
-        function getCurrentLocationSilently() {
-            const locationInput = document.getElementById('popupCity');
+    // Check if geolocation is supported
+    if (!navigator.geolocation) {
+        return; // Fail silently
+    }
 
-            // Check if geolocation is supported
-            if (!navigator.geolocation) {
-                return; // Fail silently
-            }
+    // Get current position silently
+    navigator.geolocation.getCurrentPosition(
+        // Success callback
+        function(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            
+            // Use reverse geocoding to get city name
+            reverseGeocodePopupSilently(latitude, longitude);
+        },
+        // Error callback - fail silently
+        function(error) {
+            // Do nothing on error, let user enter manually
+        },
+        // Options
+        {
+            enableHighAccuracy: false, // Faster, less battery
+            timeout: 5000, // Short timeout
+            maximumAge: 300000 // 5 minutes cache
+        }
+    );
+}
 
-            // Get current position silently
-            navigator.geolocation.getCurrentPosition(
-                // Success callback
-                function(position) {
-                    const latitude = position.coords.latitude;
-                    const longitude = position.coords.longitude;
-                    
-                    // Use reverse geocoding to get city name
-                    reverseGeocodeSilently(latitude, longitude);
-                },
-                // Error callback - fail silently
-                function(error) {
-                    // Do nothing on error, let user enter manually
-                },
-                // Options
-                {
-                    enableHighAccuracy: false, // Faster, less battery
-                    timeout: 5000, // Short timeout
-                    maximumAge: 300000 // 5 minutes cache
+// Reverse geocode silently for popup
+function reverseGeocodePopupSilently(lat, lon) {
+    const apiUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10&addressdetails=1`;
+    
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            if (data && data.address) {
+                // Extract city name from the response
+                const city = data.address.city || 
+                           data.address.town || 
+                           data.address.village || 
+                           data.address.county || 
+                           data.address.state_district ||
+                           '';
+                
+                const state = data.address.state || '';
+                
+                // Format location string
+                let locationString = city;
+                if (state && state !== city && city) {
+                    locationString += `, ${state}`;
                 }
-            );
-        }
+                
+                if (locationString && locationString !== ', ') {
+                    document.getElementById('popupCity').value = locationString;
+                }
+            }
+        })
+        .catch(error => {
+            // Fail silently, let user enter manually
+        });
+}
 
-        // Reverse geocode silently
-        function reverseGeocodeSilently(lat, lon) {
-            const apiUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10&addressdetails=1`;
-            
-            fetch(apiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    if (data && data.address) {
-                        // Extract city name from the response
-                        const city = data.address.city || 
-                                   data.address.town || 
-                                   data.address.village || 
-                                   data.address.county || 
-                                   data.address.state_district ||
-                                   '';
-                        
-                        const state = data.address.state || '';
-                        
-                        // Format location string
-                        let locationString = city;
-                        if (state && state !== city && city) {
-                            locationString += `, ${state}`;
-                        }
-                        
-                        if (locationString && locationString !== ', ') {
-                            document.getElementById('popupCity').value = locationString;
-                        }
-                    }
-                })
-                .catch(error => {
-                    // Fail silently, let user enter manually
-                });
-        }
+// Show status message for popup
+function showPopupStatusMessage(message, type) {
+    const statusDiv = document.getElementById('popupStatusMessage');
+    statusDiv.textContent = message;
+    statusDiv.className = `status-message status-${type}`;
+    statusDiv.style.display = 'block';
+    
+    // Hide message after 5 seconds
+    setTimeout(() => {
+        statusDiv.style.display = 'none';
+    }, 5000);
+}
+//Popcard Location End
 
-        // Show status message
-        function showStatusMessage(message, type) {
-            const statusDiv = document.getElementById('popupStatusMessage');
-            statusDiv.textContent = message;
-            statusDiv.className = `status-message status-${type}`;
-            statusDiv.style.display = 'block';
+// Contact Form Location Start
+// Auto-detect location when page loads for contact form
+window.addEventListener('load', function() {
+    setTimeout(() => {
+        getContactLocationSilently();
+    }, 600); // Slight delay to avoid conflicts
+});
+
+// Get current location silently for contact form (no UI feedback)
+function getContactLocationSilently() {
+    const locationInput = document.getElementById('contactCity');
+
+    // Check if geolocation is supported
+    if (!navigator.geolocation) {
+        return; // Fail silently
+    }
+
+    // Get current position silently
+    navigator.geolocation.getCurrentPosition(
+        // Success callback
+        function(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
             
-            // Hide message after 5 seconds
+            // Use reverse geocoding to get city name
+            reverseGeocodeContactSilently(latitude, longitude);
+        },
+        // Error callback - fail silently
+        function(error) {
+            // Do nothing on error, let user enter manually
+        },
+        // Options
+        {
+            enableHighAccuracy: false, // Faster, less battery
+            timeout: 5000, // Short timeout
+            maximumAge: 300000 // 5 minutes cache
+        }
+    );
+}
+
+// Reverse geocode silently for contact form
+function reverseGeocodeContactSilently(lat, lon) {
+    const apiUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10&addressdetails=1`;
+    
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            if (data && data.address) {
+                // Extract city name from the response
+                const city = data.address.city || 
+                           data.address.town || 
+                           data.address.village || 
+                           data.address.county || 
+                           data.address.state_district ||
+                           '';
+                
+                const state = data.address.state || '';
+                
+                // Format location string
+                let locationString = city;
+                if (state && state !== city && city) {
+                    locationString += `, ${state}`;
+                }
+                
+                if (locationString && locationString !== ', ') {
+                    document.getElementById('contactCity').value = locationString;
+                }
+            }
+        })
+        .catch(error => {
+            // Fail silently, let user enter manually
+        });
+}
+
+// Show status message for contact form
+function showContactStatusMessage(message, type) {
+    const statusDiv = document.getElementById('statusMessage');
+    statusDiv.textContent = message;
+    statusDiv.className = `status-message status-${type}`;
+    statusDiv.style.display = 'block';
+    
+    // Hide message after 5 seconds
+    setTimeout(() => {
+        statusDiv.style.display = 'none';
+    }, 5000);
+}
+
+// Form submission handler for contact form
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('Submit');
+            const btnText = document.getElementById('btnText');
+            
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            btnText.textContent = 'Submitting...';
+            
+            // Simulate form submission (replace with your actual submission logic)
             setTimeout(() => {
-                statusDiv.style.display = 'none';
-            }, 5000);
-        }
+                showContactStatusMessage('Form submitted successfully!', 'success');
+                
+                // Reset form
+                this.reset();
+                
+                // Re-enable button
+                submitBtn.disabled = false;
+                btnText.textContent = 'Request a spot';
+                
+                // Auto-detect location again
+                setTimeout(() => {
+                    getContactLocationSilently();
+                }, 1000);
+                
+            }, 2000);
+        });
+    }
+});
+
+// Contactform Location End

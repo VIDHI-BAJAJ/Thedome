@@ -277,7 +277,8 @@
                         </div>
 
                         <div class="form-row-three">
-                            <input type="text" id="contactCity" name="location" placeholder="Your location" required>
+                           <input type="text" id="contactCity" name="location" placeholder="Your location" required>
+                   
                             <input type="text" id="contactBudget" name="budget" placeholder="Monthly budget (₹)"
                                 oninput="this.value = this.value.replace(/[^0-9]/g,'');" required>
                             <input type="text" id="contactCar" name="car" placeholder="Car Model" required>
@@ -287,7 +288,7 @@
                             <textarea id="contactMessage" name="message" placeholder="Message" required></textarea>
                         </div>
 
-                        <button type="submit" class="submit-btn">
+                        <button type="submit" id="Submit" class="submit-btn">
                             <span id="btnText">Request a spot</span>
                         </button>
 
