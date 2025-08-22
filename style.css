@@ -2362,15 +2362,15 @@ textarea {
   transform: scale(1.02);
 }
 
-.close-btn {
+.close-btn { 
     position: absolute;
-    top: 138px;
-    left: 836px;
-    font-size: 20px;
-    cursor: pointer;
-    color: #000;
-    transition: color 0.2s;
-  }
+     top: 138px;
+     left: 836px;
+     font-size: 20px;
+     cursor: pointer;
+     color: #000;
+     transition: color 0.2s;
+}
 
 /* Animation */
 @keyframes popupScale {
