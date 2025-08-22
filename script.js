@@ -29,32 +29,33 @@ function toggleMobileMenu() {
             }
         });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+       
+function handleImageClick() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      let lat = position.coords.latitude;
+      let lng = position.coords.longitude;
 
+      // Generate 3 fake spots within ~10 km
+      let spots = [];
+      for (let i = 0; i < 3; i++) {
+        let fakeLat = lat + (Math.random() - 0.5) * 0.1;  // ~10km variation
+        let fakeLng = lng + (Math.random() - 0.5) * 0.1;
+        spots.push(fakeLat + "," + fakeLng);
+      }
 
-                function handleGetStarted() {
-            alert('Get Started clicked! This would typically redirect to a signup page.');
-        }
-
-        function handleSeeHowItWorks() {
-            alert('See how it works clicked! This would show more information or a demo.');
-        }
-
-        function handleImageClick() {
-            alert('Image clicked! This could open a gallery, show more parking locations, or redirect to the locations page.');
-        }
+      // Build Google Maps URL with multiple points
+      let mapsUrl = "https://www.google.com/maps/dir/" + spots.join("/");
+      window.open(mapsUrl, "_blank");
+    }, function(error) {
+      // If user denies location → fallback to Hyderabad
+      let mapsUrl = "https://www.google.com/maps/dir/17.385044,78.486671/17.395044,78.496671/17.405044,78.476671";
+      window.open(mapsUrl, "_blank");
+    });
+  } else {
+    alert("Geolocation not supported in your browser.");
+  }
+}
 
         // Add scroll animations
         function animateOnScroll() {
