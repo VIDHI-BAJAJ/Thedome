@@ -170,19 +170,3 @@ function detectCity() {
     cityInput.value = "Not supported";
   }
 }
-
-// Handle form submit
-document.getElementById("customerForm").addEventListener("submit", (e) => {
-  e.preventDefault();
-  document.getElementById("popupOverlay").style.display = "none";
-});
-
-
-  // Show popup automatically after page load
-  window.onload = function() {
-    document.getElementById("popupOverlay").style.display = "flex";
-  }
-
-  function closePopup() {
-    document.getElementById("popupOverlay").style.display = "none";
-  }
