@@ -327,33 +327,189 @@
     <!-- Footer End -->
 
 <!-- Customer Popup Form -->
-<div class="overlay" id="popupOverlay">
-    <div class="popup">
-        <!-- Close Button -->
-        <span class="close-btn" onclick="closePopup()">✖</span>
-        <h2>Book a free and safe Parking Space with few details</h2>
-        <form id="customerForm">
-            <input type="text" id="popupName" placeholder="Your Name" required>
+ <!-- Customer Popup Form -->
+    <div class="overlay" id="popupOverlay">
+        <div class="popup">
+            <!-- Close Button -->
+            <span class="close-btn" onclick="closePopup()">✖</span>
+            <h2>Book a free and safe Parking Space with few details</h2>
+            <form id="customerForm">
+                <input type="text" id="popupName" placeholder="Your Name" required>
 
-            <!-- Phone Number: Only digits -->
-            <input type="tel" id="popupPhone" placeholder="Phone Number" 
-                   pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number" required>
+                <!-- Phone Number: Only digits -->
+                <input type="tel" id="popupPhone" placeholder="Phone Number" 
+                       pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number" required>
 
-            <input type="text" id="popupCity" placeholder="Location" required>
-            <input type="text" id="popupCar" placeholder="Car Model" required>
+                <input type="text" id="popupCity" placeholder="Location" required>
 
-            <!-- Budget: Only digits -->
-            <input type="number" id="popupBudget" placeholder="Budget (₹)" 
-                   oninput="this.value = this.value.replace(/[^0-9]/g,'');" required>
+                <input type="text" id="popupCar" placeholder="Car Model" required>
 
-            <input type="text" id="popupMessage" placeholder="Anything you want to ask" required>
-            <button type="submit">Submit</button>
-        </form>
-        <div id="popupStatusMessage" style="display:none; padding:10px; margin-top:10px; border-radius:5px;"></div>
+                <!-- Budget: Only digits -->
+                <input type="number" id="popupBudget" placeholder="Budget (₹)" 
+                       oninput="this.value = this.value.replace(/[^0-9]/g,'');" required>
+
+                <input type="text" id="popupMessage" placeholder="Anything you want to ask" required>
+                <button type="submit">Submit</button>
+            </form>
+            <div id="popupStatusMessage" class="status-message" style="display:none;"></div>
+        </div>
     </div>
-</div>
 <!-- End Pop Card -->
 
+
+  <script>
+        // Show popup
+        function showPopup() {
+            document.getElementById('popupOverlay').style.display = 'flex';
+            // Auto-detect location when popup opens
+            setTimeout(() => {
+                getCurrentLocationSilently();
+            }, 300);
+        }
+
+        // Close popup
+        function closePopup() {
+            document.getElementById('popupOverlay').style.display = 'none';
+        }
+
+        // Close popup when clicking outside
+        document.getElementById('popupOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePopup();
+            }
+        });
+
+        // Get current location silently (no UI feedback)
+        function getCurrentLocationSilently() {
+            const locationInput = document.getElementById('popupCity');
+
+            // Check if geolocation is supported
+            if (!navigator.geolocation) {
+                return; // Fail silently
+            }
+
+            // Get current position silently
+            navigator.geolocation.getCurrentPosition(
+                // Success callback
+                function(position) {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    
+                    // Use reverse geocoding to get city name
+                    reverseGeocodeSilently(latitude, longitude);
+                },
+                // Error callback - fail silently
+                function(error) {
+                    // Do nothing on error, let user enter manually
+                },
+                // Options
+                {
+                    enableHighAccuracy: false, // Faster, less battery
+                    timeout: 5000, // Short timeout
+                    maximumAge: 300000 // 5 minutes cache
+                }
+            );
+        }
+
+        // Reverse geocode silently
+        function reverseGeocodeSilently(lat, lon) {
+            const apiUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10&addressdetails=1`;
+            
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.address) {
+                        // Extract city name from the response
+                        const city = data.address.city || 
+                                   data.address.town || 
+                                   data.address.village || 
+                                   data.address.county || 
+                                   data.address.state_district ||
+                                   '';
+                        
+                        const state = data.address.state || '';
+                        
+                        // Format location string
+                        let locationString = city;
+                        if (state && state !== city && city) {
+                            locationString += `, ${state}`;
+                        }
+                        
+                        if (locationString && locationString !== ', ') {
+                            document.getElementById('popupCity').value = locationString;
+                        }
+                    }
+                })
+                .catch(error => {
+                    // Fail silently, let user enter manually
+                });
+        }
+
+        // Get current location (manual trigger - removed since auto button is removed)
+        function getCurrentLocation() {
+            // This function is no longer needed
+        }
+
+        // Reset location button (removed since auto button is removed)
+        function resetLocationButton() {
+            // This function is no longer needed
+        }
+
+        // Show status message
+        function showStatusMessage(message, type) {
+            const statusDiv = document.getElementById('popupStatusMessage');
+            statusDiv.textContent = message;
+            statusDiv.className = `status-message status-${type}`;
+            statusDiv.style.display = 'block';
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        // Form submission
+        document.getElementById('customerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('popupName').value,
+                phone: document.getElementById('popupPhone').value,
+                location: document.getElementById('popupCity').value,
+                car: document.getElementById('popupCar').value,
+                budget: document.getElementById('popupBudget').value,
+                message: document.getElementById('popupMessage').value
+            };
+            
+            // Here you would typically send the data to your server
+            console.log('Form submitted:', formData);
+            
+            // Show success message
+            showStatusMessage('Booking request submitted successfully! We will contact you soon.', 'success');
+            
+            // Reset form after 3 seconds
+            setTimeout(() => {
+                this.reset();
+                closePopup();
+            }, 3000);
+        });
+
+        // Phone number validation - only allow digits
+        document.getElementById('popupPhone').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+            if (this.value.length > 10) {
+                this.value = this.value.slice(0, 10);
+            }
+        });
+
+        // Budget validation - only allow digits
+        document.getElementById('popupBudget').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+
+
+</script>
 
 <script src="./script.js"></script>
 </body>

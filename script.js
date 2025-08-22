@@ -358,5 +358,21 @@ function handleImageClick() {
                 closePopup();
             }
         });
+
+
+         // Phone number validation - only allow digits
+        document.getElementById('popupPhone').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+            if (this.value.length > 10) {
+                this.value = this.value.slice(0, 10);
+            }
+        });
+
+        // Budget validation - only allow digits
+        document.getElementById('popupBudget').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+
 /// End Script Popcard
+
 
