@@ -778,7 +778,6 @@ function getContactLocationSilently() {
 
 // Reverse geocode silently for contact form with detailed address extraction
 function reverseGeocodeContactSilently(lat, lon) {
-    // Using higher zoom level for more detailed results
     const apiUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1&extratags=1`;
     
     fetch(apiUrl)
