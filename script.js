@@ -163,7 +163,8 @@ function handleImageClick() {
                 phone: document.getElementById("contactPhone").value,  // Maps to "contact" field
                 city: document.getElementById("contactCity").value,
                 car: document.getElementById("contactCar").value,
-                duration: document.getElementById("ContactDuration").value,
+                duration: document.getElementById("contactDurationValue").value,
+                value: document.getElementById("contactDurationUnit").value,
                 message: document.getElementById("contactMessage").value,
             };
 
@@ -282,7 +283,8 @@ function handleImageClick() {
                 phone: document.getElementById("popupPhone").value,
                 city: document.getElementById("popupCity").value,
                 car: document.getElementById("popupCar").value,
-                duration: document.getElementById("popupDuration").value,
+                duration: document.getElementById("popupDurationValue").value,
+                value: document.getElementById("popupDurationUnit").value,
                 message: document.getElementById("popupMessage").value,
             };
 
