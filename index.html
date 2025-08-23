@@ -272,20 +272,20 @@
                 <div class="form-section">
                     <form id="contactForm">
                         <div class="form-row">
-                            <input type="text" id="contactName" name="name" placeholder="Your name" required>
-                            <input type="text" id="contactPhone" name="contact" pattern="[0-9]{10}" placeholder="phone" required>
+                            <input type="text" id="contactName" name="name" placeholder="Enter your full name" required>
+                            <input type="text" id="contactPhone" name="contact" pattern="[0-9]{10}" placeholder="Enter your phone number" required>
                         </div>
 
                         <div class="form-row-three">
-                           <input type="text" id="contactCity" name="location" placeholder="Your location" required>
+                           <input type="text" id="contactCity" name="location" placeholder="Enter your full address" required>
                    
                             <input type="text" id="contactBudget" name="budget" placeholder="Monthly budget (₹)"
                                 oninput="this.value = this.value.replace(/[^0-9]/g,'');" required>
-                            <input type="text" id="contactCar" name="car" placeholder="Car Model" required>
+                            <input type="text" id="contactCar" name="car" placeholder="e.g. Honda Civic, Maruti Swift, Tata Curve" required>
                         </div>
 
                         <div class="form-group">
-                            <textarea id="contactMessage" name="message" placeholder="Message" required></textarea>
+                            <textarea id="contactMessage" name="message" placeholder="Anything you want to ask" required></textarea>
                         </div>
 
                         <button type="submit" id="Submit" class="submit-btn">
@@ -334,15 +334,15 @@
             <span class="close-btn" onclick="closePopup()">✖</span>
             <h2>Book a free and safe Parking Space with few details</h2>
             <form id="customerForm">
-                <input type="text" id="popupName" placeholder="Your Name" required>
+                <input type="text" id="popupName" placeholder="Enter your full name" required>
 
                 <!-- Phone Number: Only digits -->
-                <input type="tel" id="popupPhone" placeholder="Phone Number" 
+                <input type="tel" id="popupPhone" placeholder="Enter your mobile number" 
                        pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number" required>
 
-                <input type="text" id="popupCity" placeholder="Location" required>
+                <input type="text" id="popupCity" placeholder="Enter your full address" required>
 
-                <input type="text" id="popupCar" placeholder="Car Model" required>
+                <input type="text" id="popupCar" placeholder="e.g. Honda Civic, Maruti Swift, Tata Curve" required>
 
                 <!-- Budget: Only digits -->
                 <input type="number" id="popupBudget" placeholder="Budget (₹)" 

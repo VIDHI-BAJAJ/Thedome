@@ -375,6 +375,219 @@ function handleImageClick() {
 
 /// End Script Popcard
  
+// //Popcard Location Start
+// // Auto-detect location when page loads for popup
+// window.addEventListener('load', function() {
+//     setTimeout(() => {
+//         getPopupLocationSilently();
+//     }, 500);
+// });
+
+// // Get current location silently for popup (no UI feedback)
+// function getPopupLocationSilently() {
+//     const locationInput = document.getElementById('popupCity');
+
+//     // Check if geolocation is supported
+//     if (!navigator.geolocation) {
+//         return; // Fail silently
+//     }
+
+//     // Get current position silently
+//     navigator.geolocation.getCurrentPosition(
+//         // Success callback
+//         function(position) {
+//             const latitude = position.coords.latitude;
+//             const longitude = position.coords.longitude;
+            
+//             // Use reverse geocoding to get city name
+//             reverseGeocodePopupSilently(latitude, longitude);
+//         },
+//         // Error callback - fail silently
+//         function(error) {
+//             // Do nothing on error, let user enter manually
+//         },
+//         // Options
+//         {
+//             enableHighAccuracy: false, // Faster, less battery
+//             timeout: 5000, // Short timeout
+//             maximumAge: 300000 // 5 minutes cache
+//         }
+//     );
+// }
+
+// // Reverse geocode silently for popup
+// function reverseGeocodePopupSilently(lat, lon) {
+//     const apiUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10&addressdetails=1`;
+    
+//     fetch(apiUrl)
+//         .then(response => response.json())
+//         .then(data => {
+//             if (data && data.address) {
+//                 // Extract city name from the response
+//                 const city = data.address.city || 
+//                            data.address.town || 
+//                            data.address.village || 
+//                            data.address.county || 
+//                            data.address.state_district ||
+//                            '';
+                
+//                 const state = data.address.state || '';
+                
+//                 // Format location string
+//                 let locationString = city;
+//                 if (state && state !== city && city) {
+//                     locationString += `, ${state}`;
+//                 }
+                
+//                 if (locationString && locationString !== ', ') {
+//                     document.getElementById('popupCity').value = locationString;
+//                 }
+//             }
+//         })
+//         .catch(error => {
+//             // Fail silently, let user enter manually
+//         });
+// }
+
+// // Show status message for popup
+// function showPopupStatusMessage(message, type) {
+//     const statusDiv = document.getElementById('popupStatusMessage');
+//     statusDiv.textContent = message;
+//     statusDiv.className = `status-message status-${type}`;
+//     statusDiv.style.display = 'block';
+    
+//     // Hide message after 5 seconds
+//     setTimeout(() => {
+//         statusDiv.style.display = 'none';
+//     }, 5000);
+// }
+// //Popcard Location End
+
+// // Contact Form Location Start
+// // Auto-detect location when page loads for contact form
+// window.addEventListener('load', function() {
+//     setTimeout(() => {
+//         getContactLocationSilently();
+//     }, 600); // Slight delay to avoid conflicts
+// });
+
+// // Get current location silently for contact form (no UI feedback)
+// function getContactLocationSilently() {
+//     const locationInput = document.getElementById('contactCity');
+
+//     // Check if geolocation is supported
+//     if (!navigator.geolocation) {
+//         return; // Fail silently
+//     }
+
+//     // Get current position silently
+//     navigator.geolocation.getCurrentPosition(
+//         // Success callback
+//         function(position) {
+//             const latitude = position.coords.latitude;
+//             const longitude = position.coords.longitude;
+            
+//             // Use reverse geocoding to get city name
+//             reverseGeocodeContactSilently(latitude, longitude);
+//         },
+//         // Error callback - fail silently
+//         function(error) {
+//             // Do nothing on error, let user enter manually
+//         },
+//         // Options
+//         {
+//             enableHighAccuracy: false, // Faster, less battery
+//             timeout: 5000, // Short timeout
+//             maximumAge: 300000 // 5 minutes cache
+//         }
+//     );
+// }
+
+// // Reverse geocode silently for contact form
+// function reverseGeocodeContactSilently(lat, lon) {
+//     const apiUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10&addressdetails=1`;
+    
+//     fetch(apiUrl)
+//         .then(response => response.json())
+//         .then(data => {
+//             if (data && data.address) {
+//                 // Extract city name from the response
+//                 const city = data.address.city || 
+//                            data.address.town || 
+//                            data.address.village || 
+//                            data.address.county || 
+//                            data.address.state_district ||
+//                            '';
+                
+//                 const state = data.address.state || '';
+                
+//                 // Format location string
+//                 let locationString = city;
+//                 if (state && state !== city && city) {
+//                     locationString += `, ${state}`;
+//                 }
+                
+//                 if (locationString && locationString !== ', ') {
+//                     document.getElementById('contactCity').value = locationString;
+//                 }
+//             }
+//         })
+//         .catch(error => {
+//             // Fail silently, let user enter manually
+//         });
+// }
+
+// // Show status message for contact form
+// function showContactStatusMessage(message, type) {
+//     const statusDiv = document.getElementById('statusMessage');
+//     statusDiv.textContent = message;
+//     statusDiv.className = `status-message status-${type}`;
+//     statusDiv.style.display = 'block';
+    
+//     // Hide message after 5 seconds
+//     setTimeout(() => {
+//         statusDiv.style.display = 'none';
+//     }, 5000);
+// }
+
+// // Form submission handler for contact form
+// document.addEventListener('DOMContentLoaded', function() {
+//     const contactForm = document.getElementById('contactForm');
+//     if (contactForm) {
+//         contactForm.addEventListener('submit', function(e) {
+//             e.preventDefault();
+            
+//             const submitBtn = document.getElementById('Submit');
+//             const btnText = document.getElementById('btnText');
+            
+//             // Disable button and show loading
+//             submitBtn.disabled = true;
+//             btnText.textContent = 'Submitting...';
+            
+//             // Simulate form submission (replace with your actual submission logic)
+//             setTimeout(() => {
+//                 showContactStatusMessage('Form submitted successfully!', 'success');
+                
+//                 // Reset form
+//                 this.reset();
+                
+//                 // Re-enable button
+//                 submitBtn.disabled = false;
+//                 btnText.textContent = 'Request a spot';
+                
+//                 // Auto-detect location again
+//                 setTimeout(() => {
+//                     getContactLocationSilently();
+//                 }, 1000);
+                
+//             }, 2000);
+//         });
+//     }
+// });
+
+// // Contactform Location End
+
+
 //Popcard Location Start
 // Auto-detect location when page loads for popup
 window.addEventListener('load', function() {
@@ -399,7 +612,7 @@ function getPopupLocationSilently() {
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
             
-            // Use reverse geocoding to get city name
+            // Use reverse geocoding to get detailed address
             reverseGeocodePopupSilently(latitude, longitude);
         },
         // Error callback - fail silently
@@ -408,44 +621,91 @@ function getPopupLocationSilently() {
         },
         // Options
         {
-            enableHighAccuracy: false, // Faster, less battery
-            timeout: 5000, // Short timeout
+            enableHighAccuracy: true, // Higher accuracy for better address details
+            timeout: 10000, // Increased timeout for better results
             maximumAge: 300000 // 5 minutes cache
         }
     );
 }
 
-// Reverse geocode silently for popup
+// Reverse geocode silently for popup with detailed address extraction
 function reverseGeocodePopupSilently(lat, lon) {
-    const apiUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10&addressdetails=1`;
+    // Using higher zoom level for more detailed results
+    const apiUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1&extratags=1`;
     
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
             if (data && data.address) {
-                // Extract city name from the response
-                const city = data.address.city || 
-                           data.address.town || 
-                           data.address.village || 
-                           data.address.county || 
-                           data.address.state_district ||
-                           '';
+                const address = data.address;
                 
-                const state = data.address.state || '';
+                // Extract detailed address components
+                const buildingName = address.building || 
+                                   address.house_name || 
+                                   address.office || 
+                                   address.shop || 
+                                   address.amenity || '';
                 
-                // Format location string
-                let locationString = city;
-                if (state && state !== city && city) {
-                    locationString += `, ${state}`;
-                }
+                const locality = address.neighbourhood || 
+                               address.suburb || 
+                               address.residential || 
+                               address.quarter || 
+                               address.hamlet || '';
                 
-                if (locationString && locationString !== ', ') {
+                const area = address.subdistrict || 
+                           address.district || 
+                           address.borough || 
+                           address.municipality || 
+                           address.county || '';
+                
+                const city = address.city || 
+                           address.town || 
+                           address.village || 
+                           address.state_district || '';
+                
+                const state = address.state || 
+                            address.province || '';
+                
+                // Create detailed location object
+                const locationData = {
+                    buildingName: buildingName,
+                    locality: locality,
+                    area: area,
+                    city: city,
+                    state: state,
+                    fullAddress: data.display_name || ''
+                };
+                
+                // Format location string with available components
+                const locationComponents = [];
+                
+                if (buildingName) locationComponents.push(buildingName);
+                if (locality && locality !== buildingName) locationComponents.push(locality);
+                if (area && area !== locality && area !== city) locationComponents.push(area);
+                if (city) locationComponents.push(city);
+                if (state && state !== city) locationComponents.push(state);
+                
+                const locationString = locationComponents.join(', ');
+                
+                if (locationString) {
                     document.getElementById('popupCity').value = locationString;
+                    
+                    // Store detailed location data as data attributes or hidden fields if needed
+                    const input = document.getElementById('popupCity');
+                    input.setAttribute('data-building', buildingName);
+                    input.setAttribute('data-locality', locality);
+                    input.setAttribute('data-area', area);
+                    input.setAttribute('data-city', city);
+                    input.setAttribute('data-state', state);
                 }
+                
+                // Optional: Log detailed location data for debugging
+                console.log('Popup Location Data:', locationData);
             }
         })
         .catch(error => {
             // Fail silently, let user enter manually
+            console.log('Popup geocoding error:', error);
         });
 }
 
@@ -460,6 +720,19 @@ function showPopupStatusMessage(message, type) {
     setTimeout(() => {
         statusDiv.style.display = 'none';
     }, 5000);
+}
+
+// Function to get detailed popup location data
+function getPopupLocationData() {
+    const input = document.getElementById('popupCity');
+    return {
+        buildingName: input.getAttribute('data-building') || '',
+        locality: input.getAttribute('data-locality') || '',
+        area: input.getAttribute('data-area') || '',
+        city: input.getAttribute('data-city') || '',
+        state: input.getAttribute('data-state') || '',
+        fullLocation: input.value || ''
+    };
 }
 //Popcard Location End
 
@@ -487,7 +760,7 @@ function getContactLocationSilently() {
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
             
-            // Use reverse geocoding to get city name
+            // Use reverse geocoding to get detailed address
             reverseGeocodeContactSilently(latitude, longitude);
         },
         // Error callback - fail silently
@@ -496,44 +769,91 @@ function getContactLocationSilently() {
         },
         // Options
         {
-            enableHighAccuracy: false, // Faster, less battery
-            timeout: 5000, // Short timeout
+            enableHighAccuracy: true, // Higher accuracy for better address details
+            timeout: 10000, // Increased timeout for better results
             maximumAge: 300000 // 5 minutes cache
         }
     );
 }
 
-// Reverse geocode silently for contact form
+// Reverse geocode silently for contact form with detailed address extraction
 function reverseGeocodeContactSilently(lat, lon) {
-    const apiUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10&addressdetails=1`;
+    // Using higher zoom level for more detailed results
+    const apiUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1&extratags=1`;
     
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
             if (data && data.address) {
-                // Extract city name from the response
-                const city = data.address.city || 
-                           data.address.town || 
-                           data.address.village || 
-                           data.address.county || 
-                           data.address.state_district ||
-                           '';
+                const address = data.address;
                 
-                const state = data.address.state || '';
+                // Extract detailed address components
+                const buildingName = address.building || 
+                                   address.house_name || 
+                                   address.office || 
+                                   address.shop || 
+                                   address.amenity || '';
                 
-                // Format location string
-                let locationString = city;
-                if (state && state !== city && city) {
-                    locationString += `, ${state}`;
-                }
+                const locality = address.neighbourhood || 
+                               address.suburb || 
+                               address.residential || 
+                               address.quarter || 
+                               address.hamlet || '';
                 
-                if (locationString && locationString !== ', ') {
+                const area = address.subdistrict || 
+                           address.district || 
+                           address.borough || 
+                           address.municipality || 
+                           address.county || '';
+                
+                const city = address.city || 
+                           address.town || 
+                           address.village || 
+                           address.state_district || '';
+                
+                const state = address.state || 
+                            address.province || '';
+                
+                // Create detailed location object
+                const locationData = {
+                    buildingName: buildingName,
+                    locality: locality,
+                    area: area,
+                    city: city,
+                    state: state,
+                    fullAddress: data.display_name || ''
+                };
+                
+                // Format location string with available components
+                const locationComponents = [];
+                
+                if (buildingName) locationComponents.push(buildingName);
+                if (locality && locality !== buildingName) locationComponents.push(locality);
+                if (area && area !== locality && area !== city) locationComponents.push(area);
+                if (city) locationComponents.push(city);
+                if (state && state !== city) locationComponents.push(state);
+                
+                const locationString = locationComponents.join(', ');
+                
+                if (locationString) {
                     document.getElementById('contactCity').value = locationString;
+                    
+                    // Store detailed location data as data attributes
+                    const input = document.getElementById('contactCity');
+                    input.setAttribute('data-building', buildingName);
+                    input.setAttribute('data-locality', locality);
+                    input.setAttribute('data-area', area);
+                    input.setAttribute('data-city', city);
+                    input.setAttribute('data-state', state);
                 }
+                
+                // Optional: Log detailed location data for debugging
+                console.log('Contact Location Data:', locationData);
             }
         })
         .catch(error => {
             // Fail silently, let user enter manually
+            console.log('Contact geocoding error:', error);
         });
 }
 
@@ -550,6 +870,19 @@ function showContactStatusMessage(message, type) {
     }, 5000);
 }
 
+// Function to get detailed contact location data
+function getContactLocationData() {
+    const input = document.getElementById('contactCity');
+    return {
+        buildingName: input.getAttribute('data-building') || '',
+        locality: input.getAttribute('data-locality') || '',
+        area: input.getAttribute('data-area') || '',
+        city: input.getAttribute('data-city') || '',
+        state: input.getAttribute('data-state') || '',
+        fullLocation: input.value || ''
+    };
+}
+
 // Form submission handler for contact form
 document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
@@ -564,8 +897,14 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.disabled = true;
             btnText.textContent = 'Submitting...';
             
+            // Get detailed location data for form submission
+            const locationData = getContactLocationData();
+            
             // Simulate form submission (replace with your actual submission logic)
             setTimeout(() => {
+                // You can now use locationData in your form submission
+                console.log('Submitting form with location data:', locationData);
+                
                 showContactStatusMessage('Form submitted successfully!', 'success');
                 
                 // Reset form
@@ -586,3 +925,13 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Contactform Location End
+
+// Utility function to manually trigger location detection
+function refreshLocation(formType = 'both') {
+    if (formType === 'popup' || formType === 'both') {
+        getPopupLocationSilently();
+    }
+    if (formType === 'contact' || formType === 'both') {
+        getContactLocationSilently();
+    }
+}
