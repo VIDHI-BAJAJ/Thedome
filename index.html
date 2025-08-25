@@ -343,19 +343,15 @@
 
   <!-- Customer Popup Form -->
 <div class="overlay" id="popupOverlay">
-    <div class="popup">
+    <div class="popup" id="popupFormBox">
         <!-- Close Button -->
         <span class="close-btn" onclick="closePopup()">✖</span>
         <h2>Book a free and safe Parking Space with few details</h2>
         <form id="customerForm">
-            
             <input type="text" id="popupName" placeholder="Enter your full name" required>
-            
             <input type="tel" id="popupPhone" placeholder="Enter your mobile number" 
                 pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number" required>
-
             <input type="text" id="popupCity" placeholder="Enter your full address" required>
-
             <input type="text" id="popupCar" placeholder="e.g. Honda Civic, Maruti Swift, Tata Curve" required>
 
             <!-- Unified Duration Input + Dropdown -->
@@ -373,8 +369,16 @@
 
             <button type="submit">Submit</button>
         </form>
+    </div>
 
-        <div id="popupStatusMessage" class="status-message" style="display:none;"></div>
+    <!-- Thank You Message -->
+    <div class="popup" id="popupThankYou" style="display:none;">
+        <span class="close-btn" onclick="closePopup()">✖</span>
+        <h2>Thank you for trusting <strong>TheDome!</strong> 🎉</h2>
+        <p>
+            You’ve received a free, safe parking space for one week.  
+            We’re not yet in your area, but don’t worry — we’ll notify you as soon as we set up our secure parking spaces near your locality.
+        </p>
     </div>
 </div>
 <!-- End Pop Card -->

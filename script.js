@@ -305,17 +305,17 @@ function handleImageClick() {
                     headers: { "Content-Type": "application/json" }
                 });
 
-                if (statusDiv) {
-                    statusDiv.style.backgroundColor = "#d4edda";
-                    statusDiv.style.color = "#155724";
-                    statusDiv.textContent = "Thank you for trusting TheDome! 🎉 You’ve received a free, safe parking space for one week. We’re not yet in your area, but don’t worry — we’ll notify you as soon as we set up our secure parking spaces near your locality";
-                }
+                // if (statusDiv) {
+                //     statusDiv.style.backgroundColor = "#d4edda";
+                //     statusDiv.style.color = "#155724";
+                //     statusDiv.textContent = "Thank you for trusting TheDome! 🎉 You’ve received a free, safe parking space for one week. We’re not yet in your area, but don’t worry — we’ll notify you as soon as we set up our secure parking spaces near your locality";
+                // }
 
                 // Reset form and close popup after 2 seconds
-                document.getElementById("customerForm").reset();
-                setTimeout(() => {
-                    closePopup();
-                }, 2000);
+                // document.getElementById("customerForm").reset();
+                // setTimeout(() => {
+                //     closePopup();
+                // }, 2000);
 
             } catch (error) {
                 console.error("Primary method failed, trying alternative:", error);
@@ -332,16 +332,16 @@ function handleImageClick() {
                         body: formDataAlt
                     });
 
-                    if (statusDiv) {
-                        statusDiv.style.backgroundColor = "#d4edda";
-                        statusDiv.style.color = "#155724";
-                        statusDiv.textContent = "Thank you for trusting TheDome! 🎉 You’ve received a free, safe parking space for one week. We’re not yet in your area, but don’t worry — we’ll notify you as soon as we set up our secure parking spaces near your locality";
-                    }
+                    // if (statusDiv) {
+                    //     statusDiv.style.backgroundColor = "#d4edda";
+                    //     statusDiv.style.color = "#155724";
+                    //     statusDiv.textContent = "Thank you for trusting TheDome! 🎉 You’ve received a free, safe parking space for one week. We’re not yet in your area, but don’t worry — we’ll notify you as soon as we set up our secure parking spaces near your locality";
+                    // }
 
-                    document.getElementById("customerForm").reset();
-                    setTimeout(() => {
-                        closePopup();
-                    }, 2000);
+                    // document.getElementById("customerForm").reset();
+                    // setTimeout(() => {
+                    //     closePopup();
+                    // }, 2000);
 
                 } catch (altError) {
                     console.error("Both methods failed:", altError);
@@ -374,6 +374,24 @@ function handleImageClick() {
         // document.getElementById('popupBudget').addEventListener('input', function(e) {
         //     this.value = this.value.replace(/[^0-9]/g, '');
         // });
+
+    document.getElementById("customerForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // prevent page reload
+
+    // Hide form box
+    document.getElementById("popupFormBox").style.display = "none";
+
+    // Show Thank You message
+    document.getElementById("popupThankYou").style.display = "block";
+});
+
+function closePopup() {
+    document.getElementById("popupOverlay").style.display = "none";
+    // Reset for next time
+    document.getElementById("popupFormBox").style.display = "block";
+    document.getElementById("popupThankYou").style.display = "none";
+    document.getElementById("customerForm").reset();
+}
 
 /// End Script Popcard
  
