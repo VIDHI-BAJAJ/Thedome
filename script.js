@@ -308,7 +308,7 @@ function handleImageClick() {
                 if (statusDiv) {
                     statusDiv.style.backgroundColor = "#d4edda";
                     statusDiv.style.color = "#155724";
-                    statusDiv.textContent = "Booking request submitted successfully! We will contact you soon.";
+                    statusDiv.textContent = "Thank you for trusting TheDome! 🎉 You’ve received a free, safe parking space for one week. We’re not yet in your area, but don’t worry — we’ll notify you as soon as we set up our secure parking spaces near your locality";
                 }
 
                 // Reset form and close popup after 2 seconds
@@ -335,7 +335,7 @@ function handleImageClick() {
                     if (statusDiv) {
                         statusDiv.style.backgroundColor = "#d4edda";
                         statusDiv.style.color = "#155724";
-                        statusDiv.textContent = "Booking request submitted successfully! We will contact you soon.";
+                        statusDiv.textContent = "Thank you for trusting TheDome! 🎉 You’ve received a free, safe parking space for one week. We’re not yet in your area, but don’t worry — we’ll notify you as soon as we set up our secure parking spaces near your locality";
                     }
 
                     document.getElementById("customerForm").reset();
